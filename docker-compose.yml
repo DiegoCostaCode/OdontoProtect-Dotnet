@@ -1,0 +1,6 @@
+﻿services:
+  sprint2-odontoprotect:
+    image: sprint2-odontoprotect
+    build:
+      context: .
+      dockerfile: Sprint2-OdontoProtect/Dockerfile
