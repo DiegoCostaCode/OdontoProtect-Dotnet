@@ -9,7 +9,7 @@ public partial class OdontoEndereco
 
     public long? Cidade { get; set; }
 
-    public long IdEndereco { get; set; }
+    public long Id { get; set; }
 
     public string? Cep { get; set; }
 

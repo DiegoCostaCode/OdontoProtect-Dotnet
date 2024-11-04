@@ -7,7 +7,7 @@ public partial class OdontoEstado
 {
     public byte? Estado { get; set; }
 
-    public long IdEstado { get; set; }
+    public long Id { get; set; }
 
     public long? Pais { get; set; }
 

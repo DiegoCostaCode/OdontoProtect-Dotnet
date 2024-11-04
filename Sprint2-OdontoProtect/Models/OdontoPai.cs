@@ -7,7 +7,7 @@ public partial class OdontoPai
 {
     public byte? Nome { get; set; }
 
-    public long IdPais { get; set; }
+    public long Id { get; set; }
 
     public virtual OdontoEstado? OdontoEstado { get; set; }
 }

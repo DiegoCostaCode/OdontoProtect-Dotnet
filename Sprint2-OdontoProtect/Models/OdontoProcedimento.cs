@@ -5,7 +5,7 @@ namespace Sprint2_OdontoProtect.Models;
 
 public partial class OdontoProcedimento
 {
-    public long IdProcedimento { get; set; }
+    public long Id { get; set; }
 
     public string? Descricao { get; set; }
 

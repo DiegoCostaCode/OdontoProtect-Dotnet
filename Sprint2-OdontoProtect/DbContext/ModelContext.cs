@@ -15,6 +15,8 @@ public partial class ModelContext : DbContext
     {
     }
 
+
+
     public virtual DbSet<OdontoAtendimento> OdontoAtendimentos { get; set; }
 
     public virtual DbSet<OdontoCarteirinha> OdontoCarteirinhas { get; set; }
@@ -41,18 +43,21 @@ public partial class ModelContext : DbContext
 
     public virtual DbSet<OdontoSinistro> OdontoSinistros { get; set; }
 
+    public virtual DbSet<OdontoTipoUsuario> OdontoTipoUsuarios { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https: //go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseOracle("Name=FiapOracleConnection");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
             .HasDefaultSchema("RM552648")
             .UseCollation("USING_NLS_COMP");
 
+
         modelBuilder.Entity<OdontoAtendimento>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726083");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844941");
 
             entity.ToTable("ODONTO_ATENDIMENTO");
 
@@ -94,13 +99,13 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoCarteirinha>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726085");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844943");
 
             entity.ToTable("ODONTO_CARTEIRINHA");
 
-            entity.HasIndex(e => e.PacienteId, "SYS_C003726086").IsUnique();
+            entity.HasIndex(e => e.PacienteId, "SYS_C003844944").IsUnique();
 
-            entity.HasIndex(e => e.PlanoId, "SYS_C003726087").IsUnique();
+            entity.HasIndex(e => e.PlanoId, "SYS_C003844945").IsUnique();
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
@@ -132,15 +137,15 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoCidade>(entity =>
         {
-            entity.HasKey(e => e.IdCidade).HasName("SYS_C003726089");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844947");
 
             entity.ToTable("ODONTO_CIDADE");
 
-            entity.HasIndex(e => e.Estado, "SYS_C003726090").IsUnique();
+            entity.HasIndex(e => e.Estado, "SYS_C003844948").IsUnique();
 
-            entity.Property(e => e.IdCidade)
+            entity.Property(e => e.Id)
                 .HasPrecision(19)
-                .HasColumnName("ID_CIDADE");
+                .HasColumnName("ID");
             entity.Property(e => e.Cidade)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -156,11 +161,11 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoClinica>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726092");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844950");
 
             entity.ToTable("ODONTO_CLINICA");
 
-            entity.HasIndex(e => e.EnderecoId, "SYS_C003726093").IsUnique();
+            entity.HasIndex(e => e.EnderecoId, "SYS_C003844951").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasPrecision(19)
@@ -180,6 +185,10 @@ public partial class ModelContext : DbContext
             entity.Property(e => e.EnderecoId)
                 .HasPrecision(19)
                 .HasColumnName("ENDERECO_ID");
+            entity.Property(e => e.RazaoSocial)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("RAZAO_SOCIAL");
             entity.Property(e => e.RazãoSocial)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -192,7 +201,7 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoClinicaDoutor>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726095");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844953");
 
             entity.ToTable("ODONTO_CLINICA_DOUTOR");
 
@@ -223,7 +232,7 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoDoutor>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726097");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844955");
 
             entity.ToTable("ODONTO_DOUTOR");
 
@@ -246,15 +255,15 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoEndereco>(entity =>
         {
-            entity.HasKey(e => e.IdEndereco).HasName("SYS_C003726099");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844957");
 
             entity.ToTable("ODONTO_ENDERECO");
 
-            entity.HasIndex(e => e.Cidade, "SYS_C003726100").IsUnique();
+            entity.HasIndex(e => e.Cidade, "SYS_C003844958").IsUnique();
 
-            entity.Property(e => e.IdEndereco)
+            entity.Property(e => e.Id)
                 .HasPrecision(19)
-                .HasColumnName("ID_ENDERECO");
+                .HasColumnName("ID");
             entity.Property(e => e.Cep)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -281,15 +290,15 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoEstado>(entity =>
         {
-            entity.HasKey(e => e.IdEstado).HasName("SYS_C003726103");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844961");
 
             entity.ToTable("ODONTO_ESTADO");
 
-            entity.HasIndex(e => e.Pais, "SYS_C003726104").IsUnique();
+            entity.HasIndex(e => e.Pais, "SYS_C003844962").IsUnique();
 
-            entity.Property(e => e.IdEstado)
+            entity.Property(e => e.Id)
                 .HasPrecision(19)
-                .HasColumnName("ID_ESTADO");
+                .HasColumnName("ID");
             entity.Property(e => e.Estado)
                 .HasPrecision(3)
                 .HasColumnName("ESTADO");
@@ -304,11 +313,17 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoPaciente>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726106");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844964");
 
             entity.ToTable("ODONTO_PACIENTE");
 
-            entity.HasIndex(e => e.EnderecoId, "SYS_C003726107").IsUnique();
+            entity.HasIndex(e => e.EnderecoId, "SYS_C003844965").IsUnique();
+
+            entity.HasIndex(e => e.Cpf, "SYS_C003844966").IsUnique();
+
+            entity.HasIndex(e => e.Email, "SYS_C003844967").IsUnique();
+
+            entity.HasIndex(e => e.Telefone, "SYS_C003844968").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasPrecision(19)
@@ -318,7 +333,7 @@ public partial class ModelContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CPF");
             entity.Property(e => e.DataNascimento)
-                .HasColumnType("DATE")
+                .HasPrecision(6)
                 .HasColumnName("DATA_NASCIMENTO");
             entity.Property(e => e.Email)
                 .HasMaxLength(255)
@@ -343,13 +358,13 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoPai>(entity =>
         {
-            entity.HasKey(e => e.IdPais).HasName("SYS_C003726110");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844971");
 
             entity.ToTable("ODONTO_PAIS");
 
-            entity.Property(e => e.IdPais)
+            entity.Property(e => e.Id)
                 .HasPrecision(19)
-                .HasColumnName("ID_PAIS");
+                .HasColumnName("ID");
             entity.Property(e => e.Nome)
                 .HasPrecision(3)
                 .HasColumnName("NOME");
@@ -357,7 +372,7 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoPlano>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726113");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844974");
 
             entity.ToTable("ODONTO_PLANO");
 
@@ -382,13 +397,13 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoProcedimento>(entity =>
         {
-            entity.HasKey(e => e.IdProcedimento).HasName("SYS_C003726116");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844977");
 
             entity.ToTable("ODONTO_PROCEDIMENTO");
 
-            entity.Property(e => e.IdProcedimento)
+            entity.Property(e => e.Id)
                 .HasPrecision(19)
-                .HasColumnName("ID_PROCEDIMENTO");
+                .HasColumnName("ID");
             entity.Property(e => e.Descricao)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -397,7 +412,7 @@ public partial class ModelContext : DbContext
 
         modelBuilder.Entity<OdontoSinistro>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("SYS_C003726118");
+            entity.HasKey(e => e.Id).HasName("SYS_C003844979");
 
             entity.ToTable("ODONTO_SINISTRO");
 
@@ -423,7 +438,19 @@ public partial class ModelContext : DbContext
                 .HasConstraintName("FK2L55KUXW1VGHV22BWRLGV9G75");
         });
 
-        OnModelCreatingPartial(modelBuilder);
+        modelBuilder.Entity<OdontoTipoUsuario>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SYS_C003726121");
+
+            entity.ToTable("ODONTO_TIPO_USUARIO");
+
+            entity.Property(e => e.Id)
+                .HasPrecision(19)
+                .HasColumnName("ID");
+            entity.Property(e => e.Atribuicao)
+                .HasPrecision(3)
+                .HasColumnName("ATRIBUICAO");
+        });
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

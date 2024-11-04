@@ -47,7 +47,7 @@ namespace Sprint2_OdontoProtect.Controllers
         // GET: OdontoPacientes/Create
         public IActionResult Create()
         {
-            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "IdEndereco", "IdEndereco");
+            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "Id", "Id");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Sprint2_OdontoProtect.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "IdEndereco", "IdEndereco", odontoPaciente.EnderecoId);
+            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "Id", "Id", odontoPaciente.EnderecoId);
             return View(odontoPaciente);
         }
 
@@ -81,7 +81,7 @@ namespace Sprint2_OdontoProtect.Controllers
             {
                 return NotFound();
             }
-            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "IdEndereco", "IdEndereco", odontoPaciente.EnderecoId);
+            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "Id", "Id", odontoPaciente.EnderecoId);
             return View(odontoPaciente);
         }
 
@@ -117,7 +117,7 @@ namespace Sprint2_OdontoProtect.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "IdEndereco", "IdEndereco", odontoPaciente.EnderecoId);
+            ViewData["EnderecoId"] = new SelectList(_context.OdontoEnderecos, "Id", "Id", odontoPaciente.EnderecoId);
             return View(odontoPaciente);
         }
 

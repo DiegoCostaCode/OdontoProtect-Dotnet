@@ -17,6 +17,8 @@ public partial class OdontoClinica
 
     public string? RazãoSocial { get; set; }
 
+    public string? RazaoSocial { get; set; }
+
     public virtual OdontoEndereco? Endereco { get; set; }
 
     public virtual ICollection<OdontoAtendimento> OdontoAtendimentos { get; set; } = new List<OdontoAtendimento>();

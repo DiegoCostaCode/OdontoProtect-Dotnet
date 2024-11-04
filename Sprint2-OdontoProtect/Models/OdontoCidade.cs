@@ -7,7 +7,7 @@ public partial class OdontoCidade
 {
     public long? Estado { get; set; }
 
-    public long IdCidade { get; set; }
+    public long Id { get; set; }
 
     public string? Cidade { get; set; }
 

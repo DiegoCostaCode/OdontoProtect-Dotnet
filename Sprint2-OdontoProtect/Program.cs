@@ -38,5 +38,4 @@ app.MapControllerRoute(
     name: "enderecos",
     pattern: "{controller=OdontoEnderecos}/{action=Index}/{id?}");
 
-
 app.Run();
