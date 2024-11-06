@@ -2,16 +2,14 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-start">
-    <h1 class="display-4">Bem-vindo!</h1>
-    <h2> Escolha o que quer explorar hoje:</h2>
-
-    <ul class="navbar-nav flex-grow-1 flex-column">
-        <li class="nav-item">
-            <a  class="nav-link text-center btn-basic" type="button" asp-area="" asp-controller="OdontoPacientes" asp-action="Index">Pacientes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-center btn-basic" type="button" asp-area="" asp-controller="OdontoEnderecos" asp-action="Index">Enderecos</a>
-        </li>
-    </ul>
+<div class="text-center">
+    <h1 class="display-4">Bem-vindo à Aplicação!</h1>
+    <p>Acesse as funcionalidades abaixo:</p>
+    <div class="buttons">
+        <a href="@Url.Action("Index", "OdontoPacientes")" class="btn btn-primary">Gerenciar Pacientes</a>
+        <a href="@Url.Action("Index", "OdontoClinicas")" class="btn btn-secondary">Gerenciar Clínicas</a>
+        <a href="@Url.Action("Index", "OdontoDoutores")" class="btn btn-success">Gerenciar Doutores</a>
+        <a href="@Url.Action("Index", "OdontoClinicaDoutores")" class="btn btn-info">Gerenciar Doutores da Clínica</a>
+        <a href="@Url.Action("Index", "OdontoAtendimentos")" class="btn btn-danger">Gerenciar Atendimentos</a>
+    </div>
 </div>

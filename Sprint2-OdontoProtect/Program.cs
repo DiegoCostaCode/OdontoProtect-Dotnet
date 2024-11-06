@@ -31,11 +31,27 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-    name: "odontopacientes",
+    name: "odontoPacientes",
     pattern: "{controller=OdontoPacientes}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
-    name: "enderecos",
-    pattern: "{controller=OdontoEnderecos}/{action=Index}/{id?}");
+    name: "odontoClinicas",
+    pattern: "{controller=OdontoClinicas}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "odontoDoutors",
+    pattern: "{controller=OdontoDoutors}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "odontoClinicaDoutors",
+    pattern: "{controller=OdontoClinicaDoutors}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "odontoProcedimentos",
+    pattern: "{controller=OdontoProcedimentos}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "odontoAtendimentos",
+    pattern: "{controller=OdontoAtendimentos}/{action=Index}/{id?}");
 
 app.Run();

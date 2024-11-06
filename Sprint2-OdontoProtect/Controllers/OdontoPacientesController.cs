@@ -35,7 +35,11 @@ namespace Sprint2_OdontoProtect.Controllers
 
             var odontoPaciente = await _context.OdontoPacientes
                 .Include(o => o.Endereco)
+                    .ThenInclude(e => e.CidadeNavigation)
+                    .ThenInclude(c => c.EstadoNavigation)
+                    .ThenInclude(es => es.PaisNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (odontoPaciente == null)
             {
                 return NotFound();
@@ -56,7 +60,7 @@ namespace Sprint2_OdontoProtect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DataNascimento,EnderecoId,Id,Cpf,Email,Nome,Telefone")] OdontoPaciente odontoPaciente)
+        public async Task<IActionResult> Create([Bind("Id,Cpf,DataNascimento,Email,Nome,Telefone,EnderecoId")] OdontoPaciente odontoPaciente)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +94,7 @@ namespace Sprint2_OdontoProtect.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("DataNascimento,EnderecoId,Id,Cpf,Email,Nome,Telefone")] OdontoPaciente odontoPaciente)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,Cpf,DataNascimento,Email,Nome,Telefone,EnderecoId")] OdontoPaciente odontoPaciente)
         {
             if (id != odontoPaciente.Id)
             {

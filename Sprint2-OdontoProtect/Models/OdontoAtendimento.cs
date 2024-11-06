@@ -5,19 +5,19 @@ namespace Sprint2_OdontoProtect.Models;
 
 public partial class OdontoAtendimento
 {
-    public decimal? Custo { get; set; }
+    public long Id { get; set; }
 
-    public long? ClinicaId { get; set; }
+    public decimal? Custo { get; set; }
 
     public DateTime? DataHoraAtendimento { get; set; }
 
-    public long Id { get; set; }
+    public string? Descrição { get; set; }
+
+    public long? ClinicaId { get; set; }
 
     public long? PacienteId { get; set; }
 
     public long? ProcedimentoId { get; set; }
-
-    public string? Descrição { get; set; }
 
     public virtual OdontoClinica? Clinica { get; set; }
 

@@ -9,6 +9,21 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="NovaPasta\**" />
+      <Compile Remove="Views\OdontoEnderecoes\**" />
+      <Content Remove="NovaPasta\**" />
+      <Content Remove="Views\OdontoEnderecoes\**" />
+      <EmbeddedResource Remove="NovaPasta\**" />
+      <EmbeddedResource Remove="Views\OdontoEnderecoes\**" />
+      <None Remove="NovaPasta\**" />
+      <None Remove="Views\OdontoEnderecoes\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Controllers\OdontoEnderecoesController.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>

@@ -1,0 +1,56 @@
+﻿@model Sprint2_OdontoProtect.Models.OdontoAtendimento
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>OdontoAtendimento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Custo" class="control-label"></label>
+                <input asp-for="Custo" class="form-control" />
+                <span asp-validation-for="Custo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataHoraAtendimento" class="control-label"></label>
+                <input asp-for="DataHoraAtendimento" class="form-control" />
+                <span asp-validation-for="DataHoraAtendimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descrição" class="control-label"></label>
+                <input asp-for="Descrição" class="form-control" />
+                <span asp-validation-for="Descrição" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClinicaId" class="control-label"></label>
+                <select asp-for="ClinicaId" class ="form-control" asp-items="ViewBag.ClinicaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacienteId" class="control-label"></label>
+                <select asp-for="PacienteId" class ="form-control" asp-items="ViewBag.PacienteId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProcedimentoId" class="control-label"></label>
+                <select asp-for="ProcedimentoId" class ="form-control" asp-items="ViewBag.ProcedimentoId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
